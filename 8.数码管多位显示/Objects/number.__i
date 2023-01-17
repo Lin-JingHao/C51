@@ -1,0 +1,1 @@
+"number.c" OPTIMIZE (8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\number.lst) OBJECT(.\Objects\number.obj)

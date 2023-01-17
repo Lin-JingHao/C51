@@ -1,0 +1,58 @@
+C51 COMPILER V9.54   MAIN                                                                  01/10/2023 10:59:32 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\51\keil5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\mai
+                    -n.lst) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          void Delay(unsigned int xms)    //@12.000MHz
+   3          {
+   4   1              while(xms--)
+   5   1              {
+   6   2                      unsigned char i, j;
+   7   2      
+   8   2              i = 2;
+   9   2              j = 239;
+  10   2              do
+  11   2              {
+  12   3                      while (--j);
+  13   3              } while (--i);
+  14   2              }
+  15   1              
+  16   1      }
+  17          
+  18          void main()
+  19          {
+  20   1              unsigned char ena=0;
+  21   1              while(1)
+  22   1              {
+  23   2                      if(P3_1==0)
+  24   2                      {
+  25   3                              Delay(20);
+  26   3                              while(P3_1==0);
+  27   3                              Delay(20);
+  28   3                              ena++;
+  29   3                              P2=~ena;
+  30   3                      }
+  31   2                      
+  32   2                      
+  33   2              }
+  34   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     54    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

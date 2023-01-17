@@ -1,0 +1,61 @@
+C51 COMPILER V9.54   MAIN                                                                  01/10/2023 22:25:20 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\51\keil5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\mai
+                    -n.lst) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          void Delay(unsigned int xms)            //@12.000MHz
+   3          {
+   4   1              while(xms--)
+   5   1              {
+   6   2                      unsigned char i, j;
+   7   2      
+   8   2                      i = 2;
+   9   2                      j = 239;
+  10   2                      do
+  11   2                      {
+  12   3                              while (--j);
+  13   3                      } while (--i);
+  14   2              }
+  15   1              
+  16   1      }
+  17          
+  18          void main()
+  19          {
+  20   1              unsigned char number=0;
+  21   1              while(1)
+  22   1              {   
+  23   2                      if(P3_1==0)
+  24   2                      {
+  25   3                                      Delay(20);
+  26   3                                      while(P3_1==0);
+  27   3                                      Delay(20);                      
+  28   3                                      if(number>=8)
+  29   3                                              number=0;
+  30   3                                      P2=~(0x01<<number);
+  31   3                                      number++;
+  32   3                      }       
+  33   2                      if(P3_0==0)
+  34   2                      {
+  35   3                                      Delay(20);
+  36   3                                      while(P3_0==0);
+  37   3                                      Delay(20);
+  38   3                                  if(number=0)
+*** WARNING C276 IN LINE 38 OF main.c: constant in condition expression
+  39   3                                              number=7;
+  40   3                                      else
+  41   3                                              number--;
+  42   3                                      P2=~(0x01<<-0number);
+*** ERROR C141 IN LINE 42 OF main.c: syntax error near 'number'
+  43   3                      }
+  44   2                      
+  45   2                      
+  46   2              }
+  47   1      }
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  1 ERROR(S)
