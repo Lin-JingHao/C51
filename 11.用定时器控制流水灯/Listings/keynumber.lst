@@ -1,0 +1,37 @@
+C51 COMPILER V9.54   KEYNUMBER                                                             01/17/2023 16:02:06 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE KEYNUMBER
+OBJECT MODULE PLACED IN .\Objects\keynumber.obj
+COMPILER INVOKED BY: C:\51\keil5\C51\BIN\C51.EXE keynumber.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\keynumber.lst) OBJECT(.\Objects\keynumber.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "Delay.h"
+   3          unsigned char keynumber()
+   4          {
+   5   1              unsigned char keynumber=0;
+   6   1              if(P3_1==0){Delay(20);while(P3_1==0);Delay(20);keynumber=1;}
+   7   1              if(P3_0==0){Delay(20);while(P3_0==0);Delay(20);keynumber=2;}
+   8   1              if(P3_2==0){Delay(20);while(P3_2==0);Delay(20);keynumber=3;}    
+   9   1              if(P3_3==0){Delay(20);while(P3_3==0);Delay(20);keynumber=4;}
+  10   1              
+  11   1              return keynumber;
+  12   1              
+  13   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     82    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
