@@ -1,0 +1,61 @@
+C51 COMPILER V9.54   MAIN                                                                  02/01/2023 16:34:55 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\51\keil5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\mai
+                    -n.lst) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "Timer_0.h"
+   3          #include "Delay.h"
+   4          
+   5          sbit Buzzer=P2^5;
+   6          
+   7          unsigned int FreqTable[]={
+   8                  63628,63731,63835,63928,64021,64103,64185,64260,64331,64400,64463,64528,
+   9                  64580,64633,64684,64732,64777,64820,64860,64898,64934,64968,65000,65030,
+  10                  65058,65085,65110,65134,65157,65178,65198,65217,65235,65252,65268,65283
+  11                  };//音符频率
+  12          
+  13          unsigned char Music[]={12,12,19,19,21,21,19,17,17,16,16,14,14,12};
+  14                  
+  15                  unsigned char FreqSelect,MusicSelect;
+  16                  
+  17          void main()
+  18          {
+  19   1              Timer0Init();   
+  20   1              while(1)
+  21   1              {
+  22   2                      MusicSelect++;
+  23   2                      FreqSelect=Music[MusicSelect];          
+  24   2                      Delay(1000);
+  25   2                      TR0=0;
+  26   2                      Delay(5);
+  27   2                      TR0=1;
+  28   2              }
+  29   1      }
+  30          
+  31          void Timer0_Rontine() interrupt 1
+  32          {       
+  33   1              TL0 =FreqTable[FreqSelect]%256;         
+  34   1              TH0 =FreqTable[FreqSelect]/256; 
+  35   1              Buzzer=!Buzzer;   //1ms 500hz;
+  36   1              
+  37   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     67    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     88    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
