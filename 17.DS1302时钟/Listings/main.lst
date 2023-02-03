@@ -1,0 +1,50 @@
+C51 COMPILER V9.54   MAIN                                                                  01/31/2023 16:25:17 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\51\keil5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\mai
+                    -n.lst) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "LCD1602.h"
+   3          #include "DS1302.h"
+   4          
+   5          
+   6          void main()
+   7          {
+   8   1              LCD_Init();
+   9   1              DS1302_Init();
+  10   1              LCD_ShowString(1,1,"  -  -  ");
+  11   1              LCD_ShowString(2,1,"  :  :  ");
+  12   1              DS1302_SetTime();
+*** WARNING C206 IN LINE 12 OF main.c: 'DS1302_SetTime': missing function-prototype
+  13   1              
+  14   1              while(1)
+  15   1              {
+  16   2                      DS1302_ReadTime();
+  17   2                      LCD_ShowNum(1,1,DS1302_Time[0],2);
+  18   2                      LCD_ShowNum(1,4,DS1302_Time[1],2);
+  19   2                      LCD_ShowNum(1,7,DS1302_Time[2],2);
+  20   2                      LCD_ShowNum(2,1,DS1302_Time[3],2);
+  21   2                      LCD_ShowNum(2,4,DS1302_Time[4],2);
+  22   2                      LCD_ShowNum(2,7,DS1302_Time[5],2);
+  23   2                      LCD_ShowNum(2,9,DS1302_Time[6],2);
+  24   2              }
+  25   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    145    ----
+   CONSTANT SIZE    =     18    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,41 @@
+C51 COMPILER V9.54   KEYNUMBER                                                             01/31/2023 17:58:12 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE KEYNUMBER
+OBJECT MODULE PLACED IN .\Objects\keynumber.obj
+COMPILER INVOKED BY: C:\51\keil5\C51\BIN\C51.EXE keynumber.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\keynumber.lst) OBJECT(.\Objects\keynumber.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "Delay.h"
+*** WARNING C315 IN LINE 1 OF Delay.h: unknown #directive 'ifndef_DELAY_H_'
+*** WARNING C315 IN LINE 2 OF Delay.h: unknown #directive 'define_DELAY_H_'
+*** WARNING C312 IN LINE 6 OF Delay.h: misplaced endif control
+   3          //独立按键1~4
+   4          unsigned char keynumber()
+   5          {
+   6   1              unsigned char keynumber=0;
+   7   1              if(P3_1==0){Delay(20);while(P3_1==0);Delay(20);keynumber=1;}
+   8   1              if(P3_0==0){Delay(20);while(P3_0==0);Delay(20);keynumber=2;}
+   9   1              if(P3_2==0){Delay(20);while(P3_2==0);Delay(20);keynumber=3;}    
+  10   1              if(P3_3==0){Delay(20);while(P3_3==0);Delay(20);keynumber=4;}
+  11   1              
+  12   1              return keynumber;
+  13   1              
+  14   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     82    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  3 WARNING(S),  0 ERROR(S)

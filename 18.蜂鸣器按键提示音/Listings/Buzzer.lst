@@ -1,0 +1,50 @@
+C51 COMPILER V9.54   BUZZER                                                                02/01/2023 11:24:09 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE BUZZER
+OBJECT MODULE PLACED IN .\Objects\Buzzer.obj
+COMPILER INVOKED BY: C:\51\keil5\C51\BIN\C51.EXE Buzzer.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\B
+                    -uzzer.lst) OBJECT(.\Objects\Buzzer.obj)
+
+line level    source
+
+   1          #include <REGX52.H>         //蜂鸣器
+   2          #include "Delay.h"
+*** WARNING C315 IN LINE 1 OF Delay.h: unknown #directive 'ifndef_DELAY_H_'
+*** WARNING C315 IN LINE 2 OF Delay.h: unknown #directive 'define_DELAY_H_'
+*** WARNING C312 IN LINE 6 OF Delay.h: misplaced endif control
+   3          #include <INTRINS.H>  
+   4          sbit Buzzer=P2^5;
+   5          
+   6          void Buzzer_Delay500us()                //@11.0592MHz
+   7          {
+   8   1              unsigned char i;
+   9   1      
+  10   1              _nop_();
+  11   1              i = 227;
+  12   1              while (--i);
+  13   1      }
+  14          
+  15          void Buzzer_Time(unsigned int xms)
+  16          {
+  17   1              unsigned int i;                 
+  18   1              for(i=0;i<xms*2;i++)
+  19   1              {
+  20   2                      Buzzer=!Buzzer;
+  21   2                      Buzzer_Delay500us();
+  22   2              }
+  23   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     40    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  3 WARNING(S),  0 ERROR(S)
