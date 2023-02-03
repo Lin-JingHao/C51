@@ -3,7 +3,7 @@
 #include "Delay.h"
 #include "TIMER0.H"
 
-unsigned char sec=56,min=59,hour=23;
+unsigned char sec=15,min=11,hour=17;
 void main()
 {
 	LCD_Init();
@@ -23,10 +23,10 @@ void main()
 void Timer0_Rontine() interrupt 1
 { 
 	static unsigned int T0count;
-	TH0=65535/256;
-	TL0=65535%256;
+	TL0 = 0x66;		
+	TH0 = 0xFC;	
 	T0count++;
-	if(T0count>=10000)
+	if(T0count>=1000)
 	{
 		T0count=0;
 		sec++;

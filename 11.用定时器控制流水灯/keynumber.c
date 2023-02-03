@@ -1,5 +1,6 @@
 #include <REGX52.H>
 #include "Delay.h"
+//¶ÀÁ¢°´¼ü1~4
 unsigned char keynumber()
 {
 	unsigned char keynumber=0;
